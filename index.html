@@ -1,0 +1,914 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Javier Fernández-Pello San Román | Ingeniero Informático</title>
+<link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;1,9..40,300&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --ink: #0f1117;
+    --ink-muted: #5a5f72;
+    --ink-faint: #9ba3b8;
+    --surface: #ffffff;
+    --surface-2: #f5f6f9;
+    --surface-3: #eceef4;
+    --accent: #1a56db;
+    --accent-light: #e8effc;
+    --accent-2: #0e3a9c;
+    --green: #0d7a55;
+    --green-light: #e4f5ee;
+    --border: #e2e5ef;
+    --radius: 12px;
+    --radius-sm: 6px;
+  }
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  html { scroll-behavior: smooth; }
+  body {
+    font-family: 'DM Sans', sans-serif;
+    background: var(--surface);
+    color: var(--ink);
+    font-size: 16px;
+    line-height: 1.7;
+  }
+
+  /* NAV */
+  nav {
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    background: rgba(255,255,255,0.92);
+    backdrop-filter: blur(12px);
+    border-bottom: 1px solid var(--border);
+    padding: 0 2rem;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    height: 60px;
+  }
+  .nav-logo {
+    font-family: 'DM Serif Display', serif;
+    font-size: 1.1rem;
+    color: var(--ink);
+    text-decoration: none;
+    letter-spacing: -0.01em;
+  }
+  .nav-links {
+    display: flex;
+    gap: 2rem;
+    list-style: none;
+  }
+  .nav-links a {
+    font-size: 0.88rem;
+    font-weight: 400;
+    color: var(--ink-muted);
+    text-decoration: none;
+    transition: color 0.2s;
+    letter-spacing: 0.02em;
+  }
+  .nav-links a:hover { color: var(--accent); }
+
+  /* HERO */
+  .hero {
+    padding: 6rem 2rem 5rem;
+    max-width: 900px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: 1fr auto;
+    gap: 4rem;
+    align-items: center;
+  }
+  .hero-eyebrow {
+    font-size: 0.78rem;
+    font-weight: 500;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--accent);
+    margin-bottom: 1.2rem;
+  }
+  .hero h1 {
+    font-family: 'DM Serif Display', serif;
+    font-size: clamp(2.4rem, 5vw, 3.6rem);
+    line-height: 1.1;
+    letter-spacing: -0.02em;
+    color: var(--ink);
+    margin-bottom: 1.4rem;
+  }
+  .hero h1 em {
+    font-style: italic;
+    color: var(--accent);
+  }
+  .hero-desc {
+    font-size: 1.08rem;
+    color: var(--ink-muted);
+    line-height: 1.75;
+    max-width: 520px;
+    margin-bottom: 2rem;
+  }
+  .hero-ctas {
+    display: flex;
+    gap: 1rem;
+    flex-wrap: wrap;
+  }
+  .btn-primary {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.7rem 1.4rem;
+    background: var(--accent);
+    color: #fff;
+    border-radius: var(--radius-sm);
+    font-size: 0.88rem;
+    font-weight: 500;
+    text-decoration: none;
+    transition: background 0.2s, transform 0.15s;
+  }
+  .btn-primary:hover { background: var(--accent-2); transform: translateY(-1px); }
+  .btn-ghost {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.7rem 1.4rem;
+    border: 1px solid var(--border);
+    color: var(--ink);
+    border-radius: var(--radius-sm);
+    font-size: 0.88rem;
+    font-weight: 400;
+    text-decoration: none;
+    transition: border-color 0.2s, background 0.2s;
+  }
+  .btn-ghost:hover { border-color: var(--accent); background: var(--accent-light); color: var(--accent); }
+  .hero-avatar {
+    width: 180px;
+    height: 180px;
+    border-radius: 50%;
+    background: linear-gradient(135deg, var(--accent-light) 0%, #dce8fd 100%);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: 'DM Serif Display', serif;
+    font-size: 3.2rem;
+    color: var(--accent);
+    border: 3px solid var(--border);
+    flex-shrink: 0;
+  }
+  .hero-tags {
+    display: flex;
+    gap: 0.6rem;
+    flex-wrap: wrap;
+    margin-top: 1.5rem;
+  }
+  .tag {
+    font-size: 0.78rem;
+    font-weight: 500;
+    padding: 0.3rem 0.75rem;
+    border-radius: 100px;
+    background: var(--surface-2);
+    color: var(--ink-muted);
+    border: 1px solid var(--border);
+  }
+  .tag.accent { background: var(--accent-light); color: var(--accent); border-color: #c5d9fa; }
+
+  /* SECTIONS */
+  section {
+    max-width: 900px;
+    margin: 0 auto;
+    padding: 4rem 2rem;
+    border-top: 1px solid var(--border);
+  }
+  .section-label {
+    font-size: 0.72rem;
+    font-weight: 500;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    color: var(--ink-faint);
+    margin-bottom: 0.5rem;
+  }
+  .section-title {
+    font-family: 'DM Serif Display', serif;
+    font-size: 1.9rem;
+    letter-spacing: -0.02em;
+    color: var(--ink);
+    margin-bottom: 2rem;
+  }
+
+  /* SOBRE MÍ / PRESENTACIÓN */
+  .about-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1rem;
+    margin-bottom: 1.5rem;
+  }
+  .about-card {
+    background: var(--surface-2);
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    padding: 1.4rem;
+  }
+  .about-card-icon {
+    font-size: 1.4rem;
+    margin-bottom: 0.6rem;
+  }
+  .about-card-title {
+    font-size: 0.8rem;
+    font-weight: 500;
+    color: var(--ink-faint);
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    margin-bottom: 0.3rem;
+  }
+  .about-card-text {
+    font-size: 0.95rem;
+    color: var(--ink);
+    line-height: 1.5;
+  }
+  .about-intro {
+    font-size: 1.08rem;
+    line-height: 1.8;
+    color: var(--ink-muted);
+    margin-bottom: 1.5rem;
+  }
+  .about-intro strong { color: var(--ink); font-weight: 500; }
+
+  /* EXPERIENCIA */
+  .timeline-item {
+    display: grid;
+    grid-template-columns: 140px 1fr;
+    gap: 2rem;
+    margin-bottom: 2.5rem;
+    align-items: start;
+  }
+  .timeline-date {
+    font-size: 0.8rem;
+    color: var(--ink-faint);
+    padding-top: 0.25rem;
+    line-height: 1.5;
+  }
+  .timeline-body {}
+  .timeline-role {
+    font-size: 1rem;
+    font-weight: 500;
+    color: var(--ink);
+    margin-bottom: 0.15rem;
+  }
+  .timeline-company {
+    font-size: 0.88rem;
+    color: var(--accent);
+    margin-bottom: 0.6rem;
+    font-weight: 400;
+  }
+  .timeline-desc {
+    font-size: 0.93rem;
+    color: var(--ink-muted);
+    line-height: 1.7;
+  }
+  .timeline-desc li { margin-bottom: 0.3rem; padding-left: 0.2rem; }
+  .timeline-desc ul { padding-left: 1.1rem; }
+  .timeline-badge {
+    display: inline-block;
+    font-size: 0.73rem;
+    padding: 0.2rem 0.55rem;
+    border-radius: 100px;
+    background: var(--green-light);
+    color: var(--green);
+    font-weight: 500;
+    margin-top: 0.6rem;
+  }
+
+  /* HABILIDADES */
+  .skills-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 1rem;
+  }
+  .skill-group {
+    background: var(--surface-2);
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    padding: 1.3rem;
+  }
+  .skill-group-title {
+    font-size: 0.78rem;
+    font-weight: 500;
+    color: var(--ink-faint);
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    margin-bottom: 0.8rem;
+  }
+  .skill-pills {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.4rem;
+  }
+  .skill-pill {
+    font-size: 0.8rem;
+    padding: 0.25rem 0.6rem;
+    border-radius: 100px;
+    background: var(--surface);
+    border: 1px solid var(--border);
+    color: var(--ink);
+  }
+  .skill-pill.accent { background: var(--accent-light); border-color: #c5d9fa; color: var(--accent); }
+
+  /* BLOG */
+  .blog-card {
+    display: grid;
+    grid-template-columns: 1fr auto;
+    gap: 1.5rem;
+    align-items: start;
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    padding: 1.8rem;
+    transition: box-shadow 0.2s, border-color 0.2s;
+    text-decoration: none;
+    color: inherit;
+    margin-bottom: 1rem;
+    display: block;
+  }
+  .blog-card:hover { border-color: var(--accent); box-shadow: 0 4px 20px rgba(26,86,219,0.08); }
+  .blog-meta {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    margin-bottom: 0.75rem;
+  }
+  .blog-topic {
+    font-size: 0.73rem;
+    font-weight: 500;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--accent);
+    background: var(--accent-light);
+    padding: 0.2rem 0.6rem;
+    border-radius: 100px;
+  }
+  .blog-date {
+    font-size: 0.8rem;
+    color: var(--ink-faint);
+  }
+  .blog-title {
+    font-family: 'DM Serif Display', serif;
+    font-size: 1.3rem;
+    line-height: 1.3;
+    color: var(--ink);
+    margin-bottom: 0.6rem;
+  }
+  .blog-excerpt {
+    font-size: 0.93rem;
+    color: var(--ink-muted);
+    line-height: 1.7;
+    margin-bottom: 1rem;
+  }
+  .blog-read-more {
+    font-size: 0.82rem;
+    color: var(--accent);
+    font-weight: 500;
+  }
+
+  /* VIDEO */
+  .video-wrapper {
+    background: var(--surface-2);
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    overflow: hidden;
+  }
+  .video-placeholder {
+    aspect-ratio: 16/9;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    background: linear-gradient(135deg, #edf2fc 0%, #e5ebf9 100%);
+    gap: 1rem;
+  }
+  .video-play-btn {
+    width: 72px;
+    height: 72px;
+    border-radius: 50%;
+    background: var(--accent);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: transform 0.2s, background 0.2s;
+    text-decoration: none;
+  }
+  .video-play-btn:hover { transform: scale(1.07); background: var(--accent-2); }
+  .video-play-btn svg { margin-left: 4px; }
+  .video-caption {
+    font-size: 0.88rem;
+    color: var(--ink-muted);
+    text-align: center;
+  }
+  .video-caption strong { color: var(--ink); font-weight: 500; }
+  .video-info {
+    padding: 1.4rem 1.8rem;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 1rem;
+  }
+  .video-info-title {
+    font-weight: 500;
+    font-size: 0.95rem;
+    margin-bottom: 0.2rem;
+  }
+  .video-info-sub {
+    font-size: 0.82rem;
+    color: var(--ink-muted);
+  }
+
+  /* FORMACIÓN */
+  .edu-item {
+    display: grid;
+    grid-template-columns: 140px 1fr;
+    gap: 2rem;
+    margin-bottom: 2rem;
+    align-items: start;
+  }
+  .edu-date {
+    font-size: 0.8rem;
+    color: var(--ink-faint);
+    padding-top: 0.25rem;
+  }
+  .edu-title {
+    font-size: 1rem;
+    font-weight: 500;
+    color: var(--ink);
+    margin-bottom: 0.15rem;
+  }
+  .edu-institution {
+    font-size: 0.88rem;
+    color: var(--accent);
+    margin-bottom: 0.4rem;
+  }
+  .edu-desc {
+    font-size: 0.9rem;
+    color: var(--ink-muted);
+  }
+
+  /* CONTACTO */
+  .contact-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1rem;
+    margin-bottom: 2rem;
+  }
+  .contact-link {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    padding: 1rem 1.2rem;
+    background: var(--surface-2);
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    text-decoration: none;
+    color: var(--ink);
+    font-size: 0.9rem;
+    transition: border-color 0.2s, background 0.2s;
+  }
+  .contact-link:hover { border-color: var(--accent); background: var(--accent-light); color: var(--accent); }
+  .contact-icon {
+    width: 36px;
+    height: 36px;
+    border-radius: var(--radius-sm);
+    background: var(--accent-light);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+  }
+  .contact-icon svg { color: var(--accent); }
+  .contact-label {
+    font-size: 0.72rem;
+    color: var(--ink-faint);
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+    font-weight: 500;
+    display: block;
+    margin-bottom: 0.15rem;
+  }
+  .contact-value { font-size: 0.88rem; color: var(--ink); }
+
+  /* FOOTER */
+  footer {
+    border-top: 1px solid var(--border);
+    text-align: center;
+    padding: 2rem;
+    font-size: 0.82rem;
+    color: var(--ink-faint);
+  }
+
+  /* DIVIDER LINE */
+  .divider {
+    width: 48px;
+    height: 3px;
+    background: var(--accent);
+    border-radius: 100px;
+    margin-bottom: 2rem;
+  }
+
+  @media (max-width: 640px) {
+    .hero { grid-template-columns: 1fr; gap: 2rem; padding: 3rem 1.25rem 2.5rem; }
+    .hero-avatar { width: 120px; height: 120px; font-size: 2.2rem; }
+    .about-grid { grid-template-columns: 1fr; }
+    .timeline-item, .edu-item { grid-template-columns: 1fr; gap: 0.4rem; }
+    .contact-grid { grid-template-columns: 1fr; }
+    nav { padding: 0 1rem; }
+    .nav-links { gap: 1rem; }
+    section { padding: 2.5rem 1.25rem; }
+  }
+</style>
+</head>
+<body>
+
+<!-- NAVEGACIÓN -->
+<nav>
+  <a href="#inicio" class="nav-logo">JFP</a>
+  <ul class="nav-links">
+    <li><a href="#sobre-mi">Sobre mí</a></li>
+    <li><a href="#carta">Carta Presentación</a></li>
+    <li><a href="#experiencia">Experiencia</a></li>
+    <li><a href="#blog">Blog</a></li>
+    <li><a href="#video">Vídeo</a></li>
+    <li><a href="#contacto">Contacto</a></li>
+  </ul>
+</nav>
+
+<!-- HERO -->
+<div class="hero" id="inicio">
+  <div>
+    <p class="hero-eyebrow">Ingeniero Informático · Ciberseguridad &amp; IA</p>
+    <h1>Javier<br>Fernández-Pello<br><em>San Román</em></h1>
+    <p class="hero-desc">
+      Estudiante de Ingeniería Informática en la UPM con experiencia real en ciberseguridad e identidad digital. Creo que la tecnología tiene que ser inteligente, adaptativa y servir a las personas — no solo a los sistemas.
+    </p>
+    <div class="hero-ctas">
+      <a href="#contacto" class="btn-primary">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,12 2,6"/></svg>
+        Contactar
+      </a>
+      <a href="https://www.linkedin.com/in/javierfdezpello/" target="_blank" class="btn-ghost">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"/><rect x="2" y="9" width="4" height="12"/><circle cx="4" cy="4" r="2"/></svg>
+        LinkedIn
+      </a>
+      <a href="#video" class="btn-ghost">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polygon points="5 3 19 12 5 21 5 3"/></svg>
+        Ver mi Video
+      </a>
+      <a href="JavierFernandez-Pello_CVTradicional.pdf" download class="btn-ghost">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+        Descargar CV
+      </a>
+    </div>
+    <div class="hero-tags">
+      <span class="tag accent">Python</span>
+      <span class="tag accent">Java</span>
+      <span class="tag accent">IAM</span>
+      <span class="tag accent">Ciberseguridad</span>
+      <span class="tag">Elixir</span>
+      <span class="tag">Docker</span>
+      <span class="tag">Git</span>
+      <span class="tag">IA / LLMs</span>
+    </div>
+  </div>
+  <div class="hero-avatar">JFP</div>
+</div>
+
+<!-- SOBRE MÍ -->
+<section id="sobre-mi">
+  <p class="section-label">Presentación</p>
+  <h2 class="section-title">Quién soy y qué aporto</h2>
+  <div class="divider"></div>
+
+  <p class="about-intro">
+    Soy ingeniero informático en formación, con <strong>experiencia práctica en proyectos de IAM (Identity and Access Management)</strong> a gran escala en Accenture Security. Me apasiona la intersección entre la ciberseguridad y la inteligencia artificial: ese espacio donde los sistemas dejan de ser rígidos y aprenden a reconocer al usuario de verdad.
+  </p>
+  <p class="about-intro">
+    Lo que me mueve es construir tecnología que tenga <strong>impacto real</strong>: que proteja a las organizaciones sin molestar a las personas, que detecte amenazas antes de que ocurran y que libere a los equipos técnicos del trabajo repetitivo. Busco proyectos donde pueda seguir aprendiendo rápido y aportar desde el primer día.
+  </p>
+
+  <div class="about-grid">
+    <div class="about-card">
+      <div class="about-card-icon">🎯</div>
+      <div class="about-card-title">Qué busco</div>
+      <div class="about-card-text">Proyectos de innovación en ciberseguridad o IA donde aplicar mis conocimientos con impacto tangible desde el primer día.</div>
+    </div>
+    <div class="about-card">
+      <div class="about-card-icon">🔍</div>
+      <div class="about-card-title">Qué me apasiona</div>
+      <div class="about-card-text">La convergencia entre la gestión de identidades y los modelos de lenguaje, y cómo esto está redefiniendo la seguridad digital.</div>
+    </div>
+    <div class="about-card">
+      <div class="about-card-icon">💡</div>
+      <div class="about-card-title">Qué aporto</div>
+      <div class="about-card-text">Capacidad de aprendizaje acelerado, experiencia real en IAM y mentalidad de resolución de problemas de forma autónoma.</div>
+    </div>
+    <div class="about-card">
+      <div class="about-card-icon">🌍</div>
+      <div class="about-card-title">Entorno</div>
+      <div class="about-card-text">Cómodo en entornos multinacionales y multidisciplinares. Inglés nivel B2 (TOEIC 2024). Español nativo.</div>
+    </div>
+  </div>
+</section>
+
+<section id="carta">
+  <p class="section-label">Carta de Presentación</p>
+  <h2 class="section-title">Motivación</h2>
+  <div class="divider"></div>
+
+  <div style="background: var(--surface-2); border: 1px solid var(--border); border-radius: var(--radius); padding: 2rem 2.2rem;">
+    <div style="font-size: 0.88rem; color: var(--ink-muted); margin-bottom: 1.5rem; line-height: 1.6;">
+      Javier Fernández-Pello San Román<br>
+      Calle Camilo José Cela, 4, 1ºB · 28232 Las Rozas de Madrid<br>
+      +34 644 431 999 · j.fernandez-pello@gmail.com<br><br>
+      Madrid, a 5 de julio de 2026
+    </div>
+
+    <p class="about-intro">Estimado/a responsable de selección:</p>
+
+    <p class="about-intro">
+      Me dirijo a usted para postularme al puesto de <strong>Ingeniero de Software Junior
+      para Sistemas de Inteligencia y Vigilancia</strong>, publicado el 21 de febrero en
+      InfoJobs. Soy estudiante del Programa Académico con Recorridos Sucesivos (Grado +
+      Máster) en Ingeniería Informática en la ETS de Ingenieros Informáticos de la
+      Universidad Politécnica de Madrid, con experiencia práctica en proyectos de
+      ciberseguridad a gran escala.
+    </p>
+
+    <p class="about-intro">
+      Durante mis prácticas en <strong>Accenture Security</strong>, participé en el ciclo
+      de vida completo de un proyecto de <strong>Identity and Access Management (IAM)</strong>,
+      desarrollando y manteniendo en <strong>Java</strong> el código de los conectores y
+      reglas de negocio dentro de <strong>SailPoint IdentityIQ</strong>, y utilizando
+      <strong>Git</strong> para gestionar el paso a producción de cada cambio implementado
+      en un entorno con más de <strong>10.000 empleados</strong>. Además, en mi Trabajo de
+      Fin de Grado desarrollé un módulo de inteligencia artificial en <strong>Elixir</strong>
+      para la plataforma de testing DeliverIT, para lo cual he implementado una
+      <strong>API REST</strong> que conecta el motor de IA con la plataforma y permite el
+      intercambio de datos en tiempo real entre ambos sistemas. Esta experiencia me permitiría 
+      integrarme de forma rápida en proyectos con tecnologías <strong>ISTAR</strong>.
+    </p>
+
+    <p class="about-intro">
+      Lo que más me atrae de esta oportunidad es que GMV combina el desarrollo de
+      software crítico con la aplicación de inteligencia artificial y procesamiento de
+      datos en tiempo real en proyectos de vigilancia y defensa — precisamente la
+      intersección entre seguridad de sistemas e IA en la que ya he trabajado.
+    </p>
+
+    <p class="about-intro">
+      Quedo a su entera disposición para concertar una entrevista. Adjunto mi
+      currículum vitae.
+    </p>
+
+    <p class="about-intro">Un cordial saludo,<br><strong>Javier Fernández-Pello San Román</strong></p>
+  </div>
+</section>
+
+<!-- EXPERIENCIA Y FORMACIÓN -->
+<section id="experiencia">
+  <p class="section-label">Trayectoria</p>
+  <h2 class="section-title">Experiencia y formación</h2>
+  <div class="divider"></div>
+
+  <!-- Experiencia -->
+  <h3 style="font-size: 0.85rem; font-weight: 500; color: var(--ink-faint); text-transform: uppercase; letter-spacing: 0.1em; margin-bottom: 1.5rem;">Experiencia laboral</h3>
+
+  <div class="timeline-item">
+    <div class="timeline-date">Sep 2025<br>Mar 2026</div>
+    <div class="timeline-body">
+      <div class="timeline-role">Prácticas — Ingeniero IAM</div>
+      <div class="timeline-company">Accenture Security · Madrid</div>
+      <div class="timeline-desc">
+        <ul>
+          <li>Participé en el ciclo de vida completo de un proyecto de Identity and Access Management (IAM) a gran escala.</li>
+          <li>Implementé soluciones de gestión de accesos e identidades para una plantilla de más de 10.000 empleados usando <strong>SailPoint IdentityIQ</strong>.</li>
+          <li>Adquirí visión de primera mano sobre los retos de los sistemas IAM tradicionales: roles estáticos, permisos heredados y falta de detección en tiempo real.</li>
+        </ul>
+      </div>
+      <span class="timeline-badge">✓ Experiencia real · Proyecto enterprise</span>
+    </div>
+  </div>
+
+  <div class="timeline-item">
+    <div class="timeline-date">En curso</div>
+    <div class="timeline-body">
+      <div class="timeline-role">TFG — Integración de LLMs en DeliverIT</div>
+      <div class="timeline-company">Universidad Politécnica de Madrid</div>
+      <div class="timeline-desc">
+        Desarrollo de un módulo de inteligencia artificial para la plataforma de testing DeliverIT usando el lenguaje funcional <strong>Elixir</strong>. Exploración práctica de cómo los modelos de lenguaje pueden automatizar y mejorar flujos de trabajo en ingeniería de software.
+      </div>
+    </div>
+  </div>
+
+  <!-- Formación -->
+  <h3 style="font-size: 0.85rem; font-weight: 500; color: var(--ink-faint); text-transform: uppercase; letter-spacing: 0.1em; margin-bottom: 1.5rem; margin-top: 2rem;">Formación académica</h3>
+
+  <div class="edu-item">
+    <div class="edu-date">En curso</div>
+    <div>
+      <div class="edu-title">Grado + Máster en Ingeniería Informática (PARS)</div>
+      <div class="edu-institution">ETS de Ingenieros Informáticos · Universidad Politécnica de Madrid</div>
+      <div class="edu-desc">Programa Académico con Recorridos Sucesivos que combina el grado y el máster. Especialización en ciberseguridad e inteligencia artificial.</div>
+    </div>
+  </div>
+
+  <div class="edu-item">
+    <div class="edu-date">2022</div>
+    <div>
+      <div class="edu-title">Bachillerato de Ciencias</div>
+      <div class="edu-institution">Colegio Zola · Las Rozas de Madrid</div>
+    </div>
+  </div>
+
+  <!-- Habilidades -->
+  <h3 style="font-size: 0.85rem; font-weight: 500; color: var(--ink-faint); text-transform: uppercase; letter-spacing: 0.1em; margin-bottom: 1.5rem; margin-top: 2rem;">Habilidades técnicas e idiomas</h3>
+
+  <div class="skills-grid">
+    <div class="skill-group">
+      <div class="skill-group-title">Lenguajes</div>
+      <div class="skill-pills">
+        <span class="skill-pill accent">Python</span>
+        <span class="skill-pill accent">Java</span>
+        <span class="skill-pill">C</span>
+        <span class="skill-pill">SQL</span>
+        <span class="skill-pill">Elixir</span>
+        <span class="skill-pill">.NET</span>
+      </div>
+    </div>
+    <div class="skill-group">
+      <div class="skill-group-title">Tecnologías</div>
+      <div class="skill-pills">
+        <span class="skill-pill accent">SailPoint IdentityIQ</span>
+        <span class="skill-pill">Docker</span>
+        <span class="skill-pill">Git</span>
+        <span class="skill-pill">Linux</span>
+        <span class="skill-pill">API REST</span>
+      </div>
+    </div>
+    <div class="skill-group">
+      <div class="skill-group-title">Dominio</div>
+      <div class="skill-pills">
+        <span class="skill-pill accent">IAM / Zero Trust</span>
+        <span class="skill-pill accent">LLMs</span>
+        <span class="skill-pill">Ciclo de vida software</span>
+        <span class="skill-pill">POO</span>
+      </div>
+    </div>
+    <div class="skill-group">
+      <div class="skill-group-title">Idiomas</div>
+      <div class="skill-pills">
+        <span class="skill-pill">Español (Nativo)</span>
+        <span class="skill-pill accent">Inglés B2 (TOEIC)</span>
+      </div>
+    </div>
+  </div>
+
+  <div style="margin-top: 2rem; text-align: center;">
+    <a href="https://www.linkedin.com/in/javierfdezpello/" target="_blank" class="btn-ghost">
+      Ver perfil completo en LinkedIn →
+    </a>
+  </div>
+</section>
+
+<!-- BLOG -->
+<section id="blog">
+  <p class="section-label">Blog divulgativo</p>
+  <h2 class="section-title">Tecnología explicada para todos</h2>
+  <div class="divider"></div>
+
+  <p style="color: var(--ink-muted); margin-bottom: 2rem; font-size: 0.95rem;">
+    Escribo sobre ciberseguridad e inteligencia artificial intentando que cualquier persona pueda entenderlo. Porque la tecnología que más nos afecta suele ser la que menos se explica.
+  </p>
+
+  <div class="blog-card" style="cursor: default;">
+    <div class="blog-meta">
+      <span class="blog-topic">Tecnología · Ciberseguridad</span>
+      <span class="blog-date">Mayo 2025</span>
+    </div>
+    <h3 class="blog-title">¿Y si tu forma de escribir fuera tu mejor contraseña?</h3>
+    <p class="blog-excerpt">
+      Los modelos de inteligencia artificial más avanzados están rediseñando la manera en que los sistemas informáticos deciden quién eres, qué puedes ver y cuándo deberían desconfiar de ti. Cada vez que introduces una contraseña, el sistema hace una pregunta sencilla: ¿sabes el secreto? Lo que viene a continuación es algo bastante más curioso: un sistema que aprende a reconocerte.
+    </p>
+    <p class="blog-excerpt">
+      Estos sistemas analizan en tiempo real el ritmo al que tecleas, los comandos que usas y el orden en que abres los documentos. Con ese perfil construyen una <strong>huella digital de comportamiento</strong> única. Si alguien roba tu contraseña e intenta hacerse pasar por ti, el sistema detectará la anomalía — no porque conozca al intruso, sino porque sabe exactamente cómo eres tú.
+    </p>
+    <p class="blog-excerpt">
+      El concepto que agrupa estos avances se llama <strong>confianza cero</strong> (zero trust): ningún usuario ni dispositivo recibe acceso automático, aunque ya esté dentro de la red. La IA permite que esto funcione sin molestar al usuario: distingue entre conectarte desde el aeropuerto porque estás de viaje y un acceso genuinamente sospechoso, ajustando los permisos en tiempo real.
+    </p>
+    <p class="blog-excerpt" style="margin-bottom: 0;">
+      <em>Basado en: Banerjee, T. (2025). The Convergence of IAM and AI. IJSRCSEIT, Vol. 11, Issue 2, pp. 969–977.</em>
+    </p>
+  </div>
+</section>
+
+<!-- VIDEO -->
+<section id="video">
+  <p class="section-label">Video</p>
+  <h2 class="section-title">Video Presentación</h2>
+  <div class="divider"></div>
+
+  <p style="color: var(--ink-muted); margin-bottom: 1.5rem; font-size: 0.95rem;">
+    Una presentación profesional sobre cómo la IA está transformando la gestión de identidades — y por qué esto importa para cualquier organización.
+  </p>
+
+  <div class="video-wrapper">
+    <div class="video-placeholder">
+      <a href="https://drive.google.com/file/d/1sVoXzIiIfcvkV2ARDA4h6orkNTD-ZQxD/view?usp=sharing" target="_blank" class="video-play-btn" aria-label="Ver vídeo">
+        <svg width="28" height="28" viewBox="0 0 24 24" fill="white"><polygon points="5 3 19 12 5 21 5 3"/></svg>
+      </a>
+      <div class="video-caption">
+        <strong>Haz clic para ver el Video</strong><br>
+        Presentación: IA + IAM en la empresa · ~8 min
+      </div>
+    </div>
+    <div class="video-info">
+      <div>
+        <div class="video-info-title">IA y Ciberseguridad: propuesta de innovación para tu empresa</div>
+        <div class="video-info-sub">Presentación profesional basada en investigación académica reciente (Banerjee, 2025)</div>
+      </div>
+      <a href="https://drive.google.com/file/d/1sVoXzIiIfcvkV2ARDA4h6orkNTD-ZQxD/view?usp=sharing" target="_blank" class="btn-ghost" style="white-space: nowrap;">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
+        Ver vídeo ↗
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACTO -->
+<section id="contacto">
+  <p class="section-label">Contacto</p>
+  <h2 class="section-title">Hablemos</h2>
+  <div class="divider"></div>
+
+  <p style="color: var(--ink-muted); margin-bottom: 2rem; font-size: 0.95rem; max-width: 500px;">
+    Estoy abierto a oportunidades en ciberseguridad, IAM e inteligencia artificial. Si quieres que hablemos, aquí me tienes.
+  </p>
+
+  <div class="contact-grid">
+    <a href="mailto:j.fernandez-pello@gmail.com" class="contact-link">
+      <div class="contact-icon">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" color="var(--accent)"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,12 2,6"/></svg>
+      </div>
+      <div>
+        <span class="contact-label">Email</span>
+        <div class="contact-value">j.fernandez-pello@gmail.com</div>
+      </div>
+    </a>
+    <a href="tel:+34644431999" class="contact-link">
+      <div class="contact-icon">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" color="var(--accent)"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 12 19.79 19.79 0 0 1 1.65 3.4 2 2 0 0 1 3.62 1h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 8.91a16 16 0 0 0 5.76 5.76l.76-.76a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+      </div>
+      <div>
+        <span class="contact-label">Teléfono</span>
+        <div class="contact-value">+34 644 431 999</div>
+      </div>
+    </a>
+    <a href="https://www.linkedin.com/in/javierfdezpello/" target="_blank" class="contact-link">
+      <div class="contact-icon">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor" color="var(--accent)"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"/><rect x="2" y="9" width="4" height="12"/><circle cx="4" cy="4" r="2"/></svg>
+      </div>
+      <div>
+        <span class="contact-label">LinkedIn</span>
+        <div class="contact-value">linkedin.com/in/javierfdezpello</div>
+      </div>
+    </a>
+    <a href="https://drive.google.com/file/d/1sVoXzIiIfcvkV2ARDA4h6orkNTD-ZQxD/view?usp=sharing" target="_blank" class="contact-link">
+      <div class="contact-icon">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" color="var(--accent)"><polygon points="23 7 16 12 23 17 23 7"/><rect x="1" y="5" width="15" height="14" rx="2" ry="2"/></svg>
+      </div>
+      <div>
+        <span class="contact-label">Video</span>
+        <div class="contact-value">Ver presentación en vídeo</div>
+      </div>
+    </a>
+    <a href="JavierFernandez-Pello_CVTradicional.pdf" download class="contact-link">
+      <div class="contact-icon">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" color="var(--accent)"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+      </div>
+      <div>
+        <span class="contact-label">CV Tradicional</span>
+        <div class="contact-value">Descargar en PDF</div>
+      </div>
+    </a>
+  </div>
+
+  <p style="font-size: 0.85rem; color: var(--ink-faint); margin-top: 1rem;">
+    📍 Las Rozas de Madrid, España &nbsp;·&nbsp; Disponible para modalidad presencial o híbrida
+  </p>
+</section>
+
+<footer>
+  <p>Javier Fernández-Pello San Román · Ingeniero Informático · Madrid, 2026</p>
+  <p style="margin-top: 0.4rem;">
+    <a href="https://www.linkedin.com/in/javierfdezpello/" target="_blank" style="color: var(--accent); text-decoration: none;">LinkedIn</a>
+    &nbsp;·&nbsp;
+    <a href="mailto:j.fernandez-pello@gmail.com" style="color: var(--accent); text-decoration: none;">Email</a>
+  </p>
+</footer>
+
+</body>
+</html>
