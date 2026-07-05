@@ -1,0 +1,294 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>¿Y si tu forma de escribir fuera tu mejor contraseña?</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400;0,600;0,700;1,400&family=Barlow:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --rojo:    #c8412a;
+            --rojo-suave: #f5e8e5;
+            --gris-oscuro: #1a1a1a;
+            --gris-medio: #444;
+            --gris-claro: #888;
+            --borde:   #e0e0e0;
+            --fondo-caja: #f8f8f6;
+        }
+
+        *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+        body {
+            font-family: 'Lora', Georgia, serif;
+            font-size: 1.05rem;
+            line-height: 1.75;
+            color: var(--gris-oscuro);
+            background: #ffffff;
+        }
+
+        /* ─── CABECERA ─── */
+        .cabecera-wrap {
+            border-bottom: 3px solid var(--gris-oscuro);
+            padding: 2.5rem 1rem 2rem;
+        }
+        .cabecera-inner {
+            max-width: 780px;
+            margin: 0 auto;
+        }
+        .meta-info {
+            font-family: 'Barlow', sans-serif;
+            font-size: 0.75rem;
+            font-weight: 600;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            color: var(--rojo);
+            margin-bottom: 1.2rem;
+        }
+        h1 {
+            font-family: 'Lora', serif;
+            font-size: clamp(2rem, 5vw, 3rem);
+            font-weight: 700;
+            line-height: 1.15;
+            color: var(--gris-oscuro);
+            margin-bottom: 1rem;
+        }
+        .subtitulo {
+            font-family: 'Barlow', sans-serif;
+            font-size: 1.05rem;
+            font-weight: 400;
+            color: var(--gris-medio);
+            border-left: 4px solid var(--rojo);
+            padding-left: 1rem;
+            margin-bottom: 1.5rem;
+        }
+        .firma {
+            font-family: 'Barlow', sans-serif;
+            font-size: 0.82rem;
+            color: var(--gris-claro);
+        }
+
+        /* ─── CUERPO ─── */
+        main {
+            max-width: 780px;
+            margin: 0 auto;
+            padding: 2.5rem 1rem 3rem;
+        }
+
+        p { margin-bottom: 1.5rem; }
+
+        /* ─── SUBTÍTULOS DE SECCIÓN ─── */
+        h2 {
+            font-family: 'Barlow', sans-serif;
+            font-size: 1.35rem;
+            font-weight: 700;
+            letter-spacing: 0.3px;
+            color: var(--gris-oscuro);
+            margin: 2.8rem 0 1rem;
+            padding-bottom: 0.4rem;
+            border-bottom: 2px solid var(--rojo);
+        }
+
+        /* ─── LEAD ─── */
+        .lead {
+            font-size: 1.12rem;
+            line-height: 1.8;
+            color: var(--gris-oscuro);
+            border-top: 1px solid var(--borde);
+            padding-top: 1.8rem;
+        }
+        .lead::first-letter {
+            font-size: 3.2rem;
+            font-weight: 700;
+            line-height: 1;
+            float: left;
+            margin: 0.05em 0.12em 0 0;
+            color: var(--rojo);
+        }
+
+        /* ─── ANALOGÍA DESTACADA ─── */
+        .analogia {
+            background: var(--rojo-suave);
+            border-left: 5px solid var(--rojo);
+            padding: 1.2rem 1.5rem;
+            margin: 2rem 0;
+            font-style: italic;
+            color: var(--gris-medio);
+            border-radius: 0 4px 4px 0;
+        }
+        .analogia::before {
+            content: '💡 ';
+            font-style: normal;
+        }
+
+        /* ─── COMPARATIVA ─── */
+        .comparativa {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 1.2rem;
+            margin: 2rem 0;
+        }
+        .col {
+            padding: 1.2rem 1.3rem;
+            background: var(--fondo-caja);
+            border: 1px solid var(--borde);
+            border-radius: 4px;
+        }
+        .col-titulo {
+            font-family: 'Barlow', sans-serif;
+            font-size: 0.78rem;
+            font-weight: 700;
+            letter-spacing: 1.5px;
+            text-transform: uppercase;
+            margin-bottom: 0.7rem;
+        }
+        .col-titulo.pro { color: #2a7a45; }
+        .col-titulo.contra { color: var(--rojo); }
+        .col p { font-size: 0.92rem; margin-bottom: 0; color: var(--gris-medio); }
+
+        /* ─── IMAGEN ─── */
+        .art-image {
+            display: block;
+            max-width: 100%;
+            height: auto;
+            margin: 2rem auto;
+            border: 1px solid var(--borde);
+            padding: 4px;
+            background: var(--fondo-caja);
+        }
+
+        /* ─── CIERRE ─── */
+        .cierre {
+            margin-top: 3rem;
+            padding-top: 2rem;
+            border-top: 3px solid var(--gris-oscuro);
+        }
+        .cierre p {
+            font-size: 1.05rem;
+        }
+        .pregunta-final {
+            font-family: 'Lora', serif;
+            font-size: 1.2rem;
+            font-weight: 600;
+            font-style: italic;
+            color: var(--gris-oscuro);
+            background: var(--fondo-caja);
+            padding: 1.4rem 1.8rem;
+            border-left: 5px solid var(--rojo);
+            margin: 1.5rem 0 0;
+            line-height: 1.6;
+        }
+
+        /* ─── PIE ─── */
+        footer {
+            max-width: 780px;
+            margin: 0 auto;
+            padding: 2rem 1rem 3rem;
+            border-top: 1px solid var(--borde);
+            font-family: 'Barlow', sans-serif;
+            font-size: 0.83rem;
+            color: var(--gris-claro);
+            line-height: 1.6;
+        }
+        footer strong { color: var(--gris-oscuro); }
+
+        /* ─── RESPONSIVE ─── */
+        @media (max-width: 600px) {
+            .comparativa, .diagrama-grid { grid-template-columns: 1fr; }
+            .diagrama-sep { display: none; }
+            .dato-clave { flex-direction: column; gap: 0.3rem; }
+        }
+    </style>
+</head>
+<body>
+
+<!-- ══════ CABECERA ══════ -->
+<div class="cabecera-wrap">
+    <div class="cabecera-inner">
+        <div class="meta-info">Tecnología · Ciberseguridad · Mayo 2025</div>
+
+        <h1>¿Y si tu forma de escribir fuera tu mejor contraseña?</h1>
+
+        <p class="subtitulo">Los modelos de inteligencia artificial más avanzados están rediseñando la manera en que los sistemas informáticos deciden quién eres, qué puedes ver y cuándo deberían desconfiar de ti.</p>
+
+        <div class="firma">Basado en: Banerjee, T. (2025). <em>The Convergence of IAM and AI</em>. IJSRCSEIT, Vol. 11, Issue 2, pp. 969-977.</div>
+    </div>
+</div>
+
+
+<!-- ══════ CUERPO ══════ -->
+<main>
+
+    <!-- LEAD -->
+    <p class="lead">Cada vez que introduces una contraseña, el sistema hace una pregunta muy sencilla: <em>¿sabes el secreto?</em> Si la respuesta es sí, entras. Si no, te quedas fuera. El problema es que el sistema nunca te pregunta <em>a ti</em>: le basta con que alguien conozca la clave correcta. Y como los delincuentes digitales llevan décadas perfeccionando el arte de robarlas, ese mecanismo está llegando al límite de lo que puede ofrecer. Lo que viene a continuación no es una contraseña más larga. Es algo bastante más curioso: un sistema que aprende a reconocerte.</p>
+
+
+    <!-- SECCIÓN 1 -->
+    <h2>Tu manera de teclear, una firma que no puedes falsificar</h2>
+
+    <p>Piensa en los mensajes de voz que te manda una persona cercana. Sin ver el nombre, sabrías reconocerla: su vocabulario, el ritmo de sus frases, las expresiones que repite. Los <strong>modelos extensos de lenguaje</strong>, el tipo de inteligencia artificial que hay detrás de los asistentes más avanzados, son capaces de hacer exactamente lo mismo con cualquier usuario de un sistema informático.</p>
+
+    <div class="analogia">Es como si, en lugar de pedirte el carné cada vez que entras a tu oficina, el edificio aprendiera a reconocer tu manera de caminar y a qué hora llegas normalmente. Alguien que roba tu tarjeta entraría por la puerta, sí, pero el edificio notaría enseguida que algo no cuadra.</div>
+
+    <p>Técnicamente, estos sistemas analizan en tiempo real el ritmo al que tecleas, los comandos que usas y el orden en que abres los documentos. Con ese perfil construyen una <strong>huella digital de comportamiento</strong> única. Si alguien que ha robado tu contraseña intenta hacerse pasar por ti, el sistema detectará la anomalía no porque conozca al intruso, sino porque sabe exactamente cómo eres tú.</p>
+
+
+    <!-- SECCIÓN 2 -->
+    <h2>No confíes en nadie: la arquitectura que vigila sin molestar</h2>
+
+    <p>El concepto que agrupa todos estos avances se llama <strong>confianza cero</strong> en inglés, <em>zero trust</em>: ningún usuario ni dispositivo recibe acceso automático, aunque ya esté dentro de la red. Imagínalo como un banco donde los empleados tienen que identificarse cada vez que acceden a la cámara acorazada, aunque lleven años trabajando allí. No porque no se confíe en ellos, sino porque el riesgo lo justifica.</p>
+
+    <img src="TradicionalVsIA.png" alt="Comparativa seguridad tradicional vs. confianza cero con IA" class="art-image">
+
+    <p>Y aquí es donde entra realmente la IA. Sin ella, verificar cada pequeño movimiento sería insufrible para el usuario. Con ella, el sistema distingue entre una anomalía legítima trabajas desde el aeropuerto porque estás de viaje y una potencialmente maliciosa, ajustando los permisos en tiempo real sin interrumpir tu trabajo.</p>
+
+
+    <!-- SECCIÓN 3 -->
+    <h2>Anticipar el ataque antes de que ocurra</h2>
+
+    <p>La defensa reactiva tiene un problema evidente: cuando el sistema detecta que algo ha ido mal, el daño ya está hecho. La apuesta de la inteligencia artificial es diferente: en lugar de esperar al incendio, leer las señales de humo. Estos sistemas rastrean pequeñas anomalías en el tráfico de red que, aisladas, no significan nada, pero que juntas forman la silueta de un ataque inminente.</p>
+
+    <div class="comparativa">
+        <div class="col">
+            <div class="col-titulo pro">✓ Con detección anticipada</div>
+            <p>El sistema identifica patrones sospechosos antes de que el atacante actúe y activa defensas sin que el usuario note nada.</p>
+        </div>
+        <div class="col">
+            <div class="col-titulo contra">✗ Sin detección anticipada</div>
+            <p>El sistema reacciona cuando el daño ya está en marcha. La respuesta llega demasiado tarde para evitar la fuga de datos.</p>
+        </div>
+    </div>
+
+
+    <!-- SECCIÓN 4 -->
+    <h2>Costes y riesgos: nada es gratis</h2>
+
+    <p>El coste de uso de la IA es elevado: estos sistemas consumen una cantidad ingente de recursos computacionales e introducen nuevas vulnerabilidades. Un atacante sofisticado podría intentar "envenenar" los datos de entrenamiento del modelo para manipular sus decisiones, algo para lo que todavía no existe una solución definitiva.</p>
+
+    <img src="CosteIA.png" alt="Análisis de costes y recursos de la IA en ciberseguridad" class="art-image">
+
+    <p>Y hay una paradoja que no conviene ignorar: para que el sistema aprenda a reconocerte, tiene que observarte de forma constante. ¿Dónde termina la seguridad y dónde empieza la vigilancia? Es una pregunta que va más allá de la informática.</p>
+
+
+    <!-- CIERRE -->
+    <div class="cierre">
+        <h2 style="margin-top:0; border-bottom-color: var(--gris-oscuro);">¿Cuánta vigilancia vale una buena seguridad?</h2>
+
+        <p>La tecnología descrita en este artículo todavía está lejos de ser universal, pero la dirección es clara: el futuro de la seguridad digital no pasa por contraseñas más largas, sino por sistemas que aprendan a reconocer quién eres de verdad. Como profesional del sector, creo que los avances son prometedores, pero que las decisiones sobre cuántos datos de comportamiento cedemos a cambio de protección no pueden quedar solo en manos de los expertos técnicos.</p>
+
+        <p class="pregunta-final">La contraseña del futuro puede que no sea algo que recuerdes, sino algo que eres. La pregunta es cuánto estás dispuesto a que te observen para demostrarlo.</p>
+    </div>
+
+</main>
+
+
+<!-- ══════ PIE ══════ -->
+<footer>
+    <strong>Fuente original:</strong><br>
+    Banerjee, T. (2025). "The Convergence of IAM and AI: How Large Language Models Are Reshaping Cybersecurity". <em>International Journal of Scientific Research in Computer Science, Engineering and Information Technology</em>, Vol. 11, Issue 2, pp. 969–977. doi: 10.32628/CSEIT25112435
+    <br><br>
+    <em>Este texto es una adaptación divulgativa del artículo original</em>
+</footer>
+
+</body>
+</html>
